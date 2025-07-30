@@ -1,16 +1,27 @@
 import { View, Image } from 'react-native';
-import { Button } from '@/components/Button/';
+
 import { styles } from './styles';
+
+import { Button } from '@/components/Button/';
+import { Input } from '@/components/Input';
+import { Filter } from '@/components/Filter';
+import { FilterStatus } from '@/types/FilterStatus';
 
 export function Home() {
   return (
     <View style={styles.container}>
       <Image source={require('@/assets/logo.png')} style={styles.logo} />
 
-      <Button title="Entrar" onPress={() => alert('oi')} activeOpacity={0.7} />
-      <Button title="Criar Conta" onPress={() => console.log('Criar Conta')} activeOpacity={0.9} />
-      <Button title="Salvar" activeOpacity={0.1} />
-      <Button title="Voltar" activeOpacity={0.5} />
+      <View style={styles.form}>
+        <Input placeholder='O que você precisa comprar?' />
+        {/* <Button title='Entrar' /> */}
+        <Button title='Entrar' activeOpacity={0.7} />
+      </View>
+
+      <View style={styles.content}>
+        <Filter status={FilterStatus.DONE} isActive />
+        <Filter status={FilterStatus.PENDING} isActive={false} />
+      </View>
     </View>
   )
 }
